@@ -19,7 +19,8 @@ namespace HomeBankingMindHub.Repositories
 
         public IQueryable<T> FindAll()
         {
-            return this.RepositoryContext.Set<T>().AsNoTracking();
+            //return this.RepositoryContext.Set<T>().AsNoTracking();
+            return this.RepositoryContext.Set<T>().AsNoTrackingWithIdentityResolution();
         }
 
         public IQueryable<T> FindAll(Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null)

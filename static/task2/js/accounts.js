@@ -9,7 +9,6 @@ var app = new Vue({
             axios.get("/api/clients/1")
             .then(function (response) {
                 //get client ifo
-                console.log(response.data);
                 app.clientInfo = response.data;
             })
             .catch(function (error) {
