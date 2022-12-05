@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "1vrpMM8Fw40pFUfLJe7ikODLEe9ewAGyM2axnHzp8WFsJIenx//gtOD24/FIYvbIj5gh0dT4Vr/dXX5W/1cANQ==",
+  "dgSpecHash": "KcxVA+S002DOOBLrla7MV54kLB2xtpkVRS3noAGb3LMDFpo0iyZsuLul2E9sNN6FBn+tvxXJhoPsPAyIrGn52Q==",
   "success": true,
-  "projectFilePath": "D:\\HomeBankingMVC\\HomeBankingMindHub\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
+  "projectFilePath": "D:\\HomeBankingMindHub\\HomeBankingMindHub\\HomeBankingMindHub.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vcoro\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\vcoro\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
