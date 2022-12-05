@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HomeBanking\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj": {}
+    "D:\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj": {}
   },
   "projects": {
-    "D:\\HomeBanking\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj": {
+    "D:\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HomeBanking\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj",
+        "projectUniqueName": "D:\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj",
         "projectName": "HomeBankingMinHub",
-        "projectPath": "D:\\HomeBanking\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj",
+        "projectPath": "D:\\HomeBankingMindHub\\HomeBankingMinHub\\HomeBankingMinHub.csproj",
         "packagesPath": "C:\\Users\\vcoro\\.nuget\\packages\\",
-        "outputPath": "D:\\HomeBanking\\HomeBankingMindHub\\HomeBankingMinHub\\obj\\",
+        "outputPath": "D:\\HomeBankingMindHub\\HomeBankingMinHub\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
