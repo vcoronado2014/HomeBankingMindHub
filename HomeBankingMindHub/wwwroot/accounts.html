@@ -20,13 +20,15 @@
         </div>
         <div class="row">
             <div v-for="account in clientInfo.accounts.$values" class="col-12 col-md-3 mt-2">
-                <div class="card border-0 account">
-                    <div class="card-body">
-                        <h5 class="card-title account-number">{{ account.number }}</h5>
-                        <p class="card-text"> {{ formatDate(account.creationDate) }}</p>
-                        <p class="text-center lead account-balance"> ${{ account.balance }} </p>
+                <a class="account-link" v-bind:href="'http://localhost:15922/account.html?id='+account.id">
+                    <div class="card border-0 account">
+                        <div class="card-body">
+                            <h5 class="card-title account-number">{{ account.number }}</h5>
+                            <p class="card-text"> {{ formatDate(account.creationDate) }}</p>
+                            <p class="text-center lead account-balance"> ${{ account.balance }} </p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
