@@ -15,10 +15,12 @@ namespace HomeBankingMindHub.Controllers
     public class ClientsController : ControllerBase
     {
         private IClientRepository _clientRepository;
+        private IAccountRepository _accountRepository;
 
-        public ClientsController(IClientRepository clientRepository)
+        public ClientsController(IClientRepository clientRepository, IAccountRepository accountRepository)
         {
             _clientRepository = clientRepository;
+            _accountRepository = accountRepository;
         }
 
         [HttpGet]
@@ -225,5 +227,110 @@ namespace HomeBankingMindHub.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [HttpGet("current/accounts")]
+        public IActionResult GetAccounts()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                if (email == string.Empty)
+                {
+                    return Forbid();
+                }
+
+                Client client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                {
+                    return Forbid();
+                }
+
+                var accounts = _accountRepository.GetAccountsByClient(client.Id);
+
+                var accountsDTO = new List<AccountDTO>();
+
+                foreach (Account account in accounts)
+                {
+                    var newAccountDTO = new AccountDTO
+                    {
+                        Id = account.Id,
+                        Balance = account.Balance,
+                        CreationDate = account.CreationDate,
+                        Number = account.Number,
+                        Transactions = account.Transactions.Select(tr => new TransactionDTO
+                        {
+                            Id = tr.Id,
+                            Amount = tr.Amount,
+                            Date = tr.Date,
+                            Description = tr.Description,
+                            Type = tr.Type
+
+                        }).ToList(),
+
+                    };
+
+                    accountsDTO.Add(newAccountDTO);
+                }
+
+                return Ok(accountsDTO);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpPost("current/accounts")]
+        public IActionResult Post()
+        {
+            try
+            {
+                string email = User.FindFirst("Client") != null ? User.FindFirst("Client").Value : string.Empty;
+                if (email == string.Empty)
+                {
+                    return Forbid();
+                }
+
+                Client client = _clientRepository.FindByEmail(email);
+
+                if (client == null)
+                {
+                    return Forbid();
+                }
+
+                //si tiene más de 3 cuentas
+                if (client?.Accounts?.Count >= 3)
+                {
+                    return Forbid("Client´s of accounts limit reached");
+                }
+
+                //si todo va bien creamos el account
+                Random rnd= new Random();
+                string accounNumber = "VIN" + ((rnd.Next() * (10000000 - 1)) + 1).ToString();
+
+                //guardar en el repositorio
+                Account account = new Account
+                {
+                    Balance = 0,
+                    ClientId = client.Id,
+                    CreationDate = DateTime.Now,
+                    Number = accounNumber,
+                };
+
+                _accountRepository.Save(account);
+
+                return Created("Creado con éxito", account);
+
+            }
+            catch (Exception ex) 
+            { 
+                return StatusCode(500, ex.Message);
+            
+            }
+        }
+
+
     }
 }
